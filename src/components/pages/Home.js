@@ -3,6 +3,7 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import { Link ,NavLink} from 'react-router-dom'
 
+
 const Home=()=>{
     const [blogs,setBlogs]=useState([])
     useEffect(()=>{
@@ -44,8 +45,8 @@ const Home=()=>{
             {/*<td>{blog.userId}</td>*/}
             <td>{blog.title}</td>
             <td>{blog.body}</td>
-            {/*<td>{blog.author}</td>*/}
-            <td>{localStorage.getItem("title")}</td>
+            <td>{blog.author}</td>
+            {/*<td>{localStorage.getItem("title")}</td>*/}
             <td>
                 <Link className='btn btn-primary m-2' to={`/blog/${blog.id}`}><i class="fa fa-eye" aria-hidden="true"></i></Link>
                 <Link className='btn btn-primary m-2' to={`/edit/${blog.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link>

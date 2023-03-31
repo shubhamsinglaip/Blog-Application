@@ -29,7 +29,6 @@ function App() {
           <Route exact path="*" element={<PageNotFound></PageNotFound>}></Route>
         </Routes>
 
-
         {/*<Post></Post>*/}
       </div>
     </Router>

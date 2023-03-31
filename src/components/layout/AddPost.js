@@ -7,11 +7,20 @@ const Addblog=()=>{
     const [body,setBody]=useState('')
     const [author,setAuthor]=useState('')
 
-    const handleSubmit=(e)=>{
+    const handleTitleChange = (e)=>{
+        setTitle(e.target.value)
+    }
+    const handleBodyChange = (e)=>{
+        setBody(e.target.value)
+    }
+    const handleAuthorChange = (e)=>{
+        setAuthor(e.target.value)
+    }
+    const handleSubmit = (e)=>{
         e.preventDefault();
-        localStorage.setItem('title',title)
-        localStorage.setItem('body',body)
-        localStorage.setItem('author',author)
+        const _blogs = localStorage.getItem('blogs') || []
+
+        localStorage.setItem('blogs', JSON.stringify([..._blogs, { title, body,author }]))
     }
     
 
@@ -80,7 +89,7 @@ const Addblog=()=>{
                                 className="form-control form-control-lg"
                                 name="title"
                                 defaultValue={title}
-            onChange={e=>setTitle(e.target.value)}
+            onChange={e=>handleTitleChange(e)}
                             />
                             </div>
                             <div className="">
@@ -93,7 +102,7 @@ const Addblog=()=>{
                                 name="body"
                                 //onChange={fieldChanged}
                                 defaultValue={body}
-            onChange={e=>setBody(e.target.value)}
+            onChange={e=>handleBodyChange(e)}
                             />
                         </div>
                         <div className="form-group">
@@ -106,7 +115,7 @@ const Addblog=()=>{
                                 name="author"
                                 //onChange={fieldChanged}
                                 defaultValue={author}
-            onChange={e=>setAuthor(e.target.value)}
+            onChange={e=>handleAuthorChange(e)}
                             />
                         </div>
                         
