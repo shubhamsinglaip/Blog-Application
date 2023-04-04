@@ -3,9 +3,11 @@ import { Card, CardBody, Form, Input, Label, Button, Container } from "reactstra
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'; 
 const Addblog=()=>{
+    {/*
     const [title,setTitle]=useState('')
     const [body,setBody]=useState('')
     const [author,setAuthor]=useState('')
+
 
     const handleTitleChange = (e)=>{
         setTitle(e.target.value)
@@ -16,12 +18,15 @@ const Addblog=()=>{
     const handleAuthorChange = (e)=>{
         setAuthor(e.target.value)
     }
+    
     const handleSubmit = (e)=>{
         e.preventDefault();
         const _blogs = localStorage.getItem('blogs') || []
 
         localStorage.setItem('blogs', JSON.stringify([..._blogs, { title, body,author }]))
     }
+*/}
+
     
 
 
@@ -38,7 +43,7 @@ const Addblog=()=>{
         author:""
     })
 
-    //const {title,body,author}=blog;
+    const {title,body,author}=blog;
     const onInputChange = (e)=>{
         setBlog({ ...blog,[e.target.name]:e.target.value})
 
@@ -46,20 +51,20 @@ const Addblog=()=>{
 
 
     }
-    {/*
+    
     const onSubmit= async(e)=>{
         e.preventDefault();
         await axios.post("http://localhost:3005/blogPosts",blog)
         navigate("/")
 
     }
-*/}
+
     return(
 
         <div className="container">
             <div className ="w-75 mx-auto shadow p-5">
                 <h2 className="text-center mb-4">Add a Blog</h2>
-                <Form >
+                <Form onSubmit={e=>onSubmit(e)}>
                     {/*
                                 
                                 
@@ -89,7 +94,8 @@ const Addblog=()=>{
                                 className="form-control form-control-lg"
                                 name="title"
                                 defaultValue={title}
-            onChange={e=>handleTitleChange(e)}
+            //onChange={e=>handleTitleChange(e)
+            onChange={e=>onInputChange(e)}
                             />
                             </div>
                             <div className="">
@@ -102,7 +108,8 @@ const Addblog=()=>{
                                 name="body"
                                 //onChange={fieldChanged}
                                 defaultValue={body}
-            onChange={e=>handleBodyChange(e)}
+            //onChange={e=>handleBodyChange(e)
+            onChange={e=>onInputChange(e)}
                             />
                         </div>
                         <div className="form-group">
@@ -115,11 +122,12 @@ const Addblog=()=>{
                                 name="author"
                                 //onChange={fieldChanged}
                                 defaultValue={author}
-            onChange={e=>handleAuthorChange(e)}
+            //onChange={e=>handleAuthorChange(e)
+            onChange={e=>onInputChange(e)}
                             />
                         </div>
                         
-                    <Button type="submit"className="btn btn-primary btn" onClick={handleSubmit}>Add Blog</Button>
+                    <Button type="submit"className="btn btn-primary btn" onClick={onSubmit}>Add Blog</Button>
 
                 </Form>
 
